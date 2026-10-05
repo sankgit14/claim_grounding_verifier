@@ -1,0 +1,16 @@
+Vulnerability Report: Buffer Overflow in Packet Parser
+
+Target Repository: demo_repo
+Target Version: v1.1.0
+
+Description:
+A buffer overflow vulnerability exists in src/parser.c within the parse_packet() function.
+The parse_packet() function calls copy_payload() to transfer raw network packets into a local stack buffer.
+Furthermore, parse_packet() delegates data processing to fake_decoder() prior to packet validation.
+
+History & Fix:
+The buffer overflow vulnerability was addressed in commit message 'Fix buffer overflow vulnerability: removed vulnerable_copy and added bound checks'.
+In version 1.0.0, parse_packet() invoked vulnerable_copy() without size validation.
+
+Impact:
+An attacker sending a crafted packet can overwrite stack memory and achieve arbitrary remote code execution.

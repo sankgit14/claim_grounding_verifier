@@ -1,0 +1,10 @@
+{
+  "demo_repo": {
+    "path": "demo_repo",
+    "target_commit": "HEAD"
+  },
+  "hackerone_sample": {
+    "path": "vulneribility_data",
+    "records": 76
+  }
+}

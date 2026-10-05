@@ -1,0 +1,321 @@
+{
+  "report_id": "DEMO-REPORT-001",
+  "repository": "demo_repo",
+  "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+  "total_claims": 12,
+  "supported_claims": 6,
+  "refuted_claims": 4,
+  "unverifiable_claims": 2,
+  "triage_score": 0.0,
+  "triage_label": "LOW_PRIORITY (Likely Invalid / Fabricated Claims)",
+  "results": [
+    {
+      "claim": {
+        "claim_id": "C01",
+        "claim_text": "File 'src/parser.c' exists in target repository.",
+        "claim_type": "FILE_EXISTS",
+        "entities": {
+          "file_path": "src/parser.c"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "CURRENTLY_SUPPORTED",
+      "confidence": 1.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": "src/parser.c",
+        "symbol_name": null,
+        "line_range": null,
+        "evidence_type": "FILE_EXISTS_VERIFIED",
+        "snippet": null,
+        "description": "File 'src/parser.c' confirmed present in target repository tree at revision a45c316."
+      },
+      "reason": "File 'src/parser.c' exists in target revision."
+    },
+    {
+      "claim": {
+        "claim_id": "C02",
+        "claim_text": "Function 'function()' calls function 'copy_payload()'.",
+        "claim_type": "CALL_RELATION",
+        "entities": {
+          "caller": "function",
+          "callee": "copy_payload"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "REFUTED",
+      "version_status": "REFUTED_AT_TARGET",
+      "confidence": 0.85,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": "function",
+        "line_range": null,
+        "evidence_type": "CALL_RELATION_UNRESOLVED",
+        "snippet": null,
+        "description": "Direct call relation 'function() -> copy_payload()' absent in AST analysis scope."
+      },
+      "reason": "Both 'function' and 'copy_payload' exist, but no direct call relation was found in analysis scope."
+    },
+    {
+      "claim": {
+        "claim_id": "C03",
+        "claim_text": "Function 'parse_packet()' calls function 'fake_decoder()'.",
+        "claim_type": "CALL_RELATION",
+        "entities": {
+          "caller": "parse_packet",
+          "callee": "fake_decoder"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "REFUTED",
+      "version_status": "REFUTED_AT_TARGET",
+      "confidence": 1.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": "src/parser.c",
+        "symbol_name": "parse_packet",
+        "line_range": null,
+        "evidence_type": "CALL_RELATION_UNRESOLVED",
+        "snippet": null,
+        "description": "Direct call relation 'parse_packet() -> fake_decoder()' absent in AST analysis scope."
+      },
+      "reason": "Call relation 'parse_packet() -> fake_decoder()' is refuted because callee symbol 'fake_decoder' does not exist."
+    },
+    {
+      "claim": {
+        "claim_id": "C04",
+        "claim_text": "Symbol/Function 'parse_packet()' exists in source code.",
+        "claim_type": "SYMBOL_EXISTS",
+        "entities": {
+          "symbol_name": "parse_packet"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "CURRENTLY_SUPPORTED",
+      "confidence": 1.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": "src/parser.c",
+        "symbol_name": "parse_packet",
+        "line_range": "4",
+        "evidence_type": "SYMBOL_AST_VERIFIED",
+        "snippet": null,
+        "description": "Symbol 'parse_packet' found in AST at src/parser.c:4 at revision a45c316."
+      },
+      "reason": "Symbol 'parse_packet()' resolved in AST at src/parser.c:4."
+    },
+    {
+      "claim": {
+        "claim_id": "C05",
+        "claim_text": "Symbol/Function 'copy_payload()' exists in source code.",
+        "claim_type": "SYMBOL_EXISTS",
+        "entities": {
+          "symbol_name": "copy_payload"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "CURRENTLY_SUPPORTED",
+      "confidence": 1.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": "src/util.c",
+        "symbol_name": "copy_payload",
+        "line_range": "4",
+        "evidence_type": "SYMBOL_AST_VERIFIED",
+        "snippet": null,
+        "description": "Symbol 'copy_payload' found in AST at src/util.c:4 at revision a45c316."
+      },
+      "reason": "Symbol 'copy_payload()' resolved in AST at src/util.c:4."
+    },
+    {
+      "claim": {
+        "claim_id": "C06",
+        "claim_text": "Symbol/Function 'fake_decoder()' exists in source code.",
+        "claim_type": "SYMBOL_EXISTS",
+        "entities": {
+          "symbol_name": "fake_decoder"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "REFUTED",
+      "version_status": "REFUTED_AT_TARGET",
+      "confidence": 1.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": "fake_decoder",
+        "line_range": null,
+        "evidence_type": "SYMBOL_ABSENT",
+        "snippet": null,
+        "description": "Symbol 'fake_decoder' not resolved in AST or symbol index for revision a45c316."
+      },
+      "reason": "Symbol 'fake_decoder()' is completely absent and unresolvable in source code or Git history (Fabricated Symbol)."
+    },
+    {
+      "claim": {
+        "claim_id": "C07",
+        "claim_text": "Symbol/Function 'vulnerable_copy()' exists in source code.",
+        "claim_type": "SYMBOL_EXISTS",
+        "entities": {
+          "symbol_name": "vulnerable_copy"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "REFUTED",
+      "version_status": "HISTORICAL_ONLY",
+      "confidence": 0.9,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": "vulnerable_copy",
+        "line_range": null,
+        "evidence_type": "SYMBOL_ABSENT",
+        "snippet": null,
+        "description": "Symbol 'vulnerable_copy' not resolved in AST or symbol index for revision a45c316. Note: Symbol existed in past commit a45c316."
+      },
+      "reason": "Symbol 'vulnerable_copy()' is absent in target revision, but existed historically in commit a45c316."
+    },
+    {
+      "claim": {
+        "claim_id": "C08",
+        "claim_text": "Historical commit claim: The buffer overflow vulnerability was addressed in commit message 'Fix buffer overflow vulnerability: removed vulnerable_copy and added bound checks'.",
+        "claim_type": "HISTORY",
+        "entities": {
+          "statement": "The buffer overflow vulnerability was addressed in commit message 'Fix buffer overflow vulnerability: removed vulnerable_copy and added bound checks'."
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "CURRENTLY_SUPPORTED",
+      "confidence": 0.95,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": null,
+        "line_range": null,
+        "evidence_type": "GIT_LOG_VERIFIED",
+        "snippet": null,
+        "description": "Commit a45c316 message confirms fix: 'Fix buffer overflow vulnerability: removed vulnerable_copy and added bound checks'."
+      },
+      "reason": "Git commit a45c316 confirms historical fix claim."
+    },
+    {
+      "claim": {
+        "claim_id": "C09",
+        "claim_text": "Vulnerability affects version '1.1.0'.",
+        "claim_type": "VERSION",
+        "entities": {
+          "version": "1.1.0"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "HISTORICAL_ONLY",
+      "confidence": 0.9,
+      "evidence": null,
+      "reason": "Version tag '1.1.0' resolved to historical commit."
+    },
+    {
+      "claim": {
+        "claim_id": "C10",
+        "claim_text": "Vulnerability affects version '1.0.0'.",
+        "claim_type": "VERSION",
+        "entities": {
+          "version": "1.0.0"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "SUPPORTED",
+      "version_status": "HISTORICAL_ONLY",
+      "confidence": 0.9,
+      "evidence": null,
+      "reason": "Version tag '1.0.0' resolved to historical commit."
+    },
+    {
+      "claim": {
+        "claim_id": "C11",
+        "claim_text": "Behavioral claim: Vulnerability allows remote code execution.",
+        "claim_type": "BEHAVIOR",
+        "entities": {
+          "impact": "remote code execution"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "UNVERIFIABLE",
+      "version_status": "UNVERIFIABLE",
+      "confidence": 0.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": null,
+        "line_range": null,
+        "evidence_type": "EXPLICIT_ABSTENTION",
+        "snippet": null,
+        "description": "Static source analysis cannot establish dynamic runtime behavior 'remote code execution'. System explicitly abstained."
+      },
+      "reason": "EXPLICIT ABSTENTION: Dynamic behavioral claim (remote code execution) requires runtime dynamic execution or symbolic proof not present in static evidence."
+    },
+    {
+      "claim": {
+        "claim_id": "C12",
+        "claim_text": "Behavioral claim: Vulnerability allows buffer overflow.",
+        "claim_type": "BEHAVIOR",
+        "entities": {
+          "impact": "buffer overflow"
+        },
+        "target_repository": "demo_repo",
+        "target_commit": "a45c3162f463f809840af4838ecdef8e725c0804",
+        "target_version": null
+      },
+      "verdict": "UNVERIFIABLE",
+      "version_status": "UNVERIFIABLE",
+      "confidence": 0.0,
+      "evidence": {
+        "repository": "demo_repo",
+        "commit": "a45c316",
+        "file_path": null,
+        "symbol_name": null,
+        "line_range": null,
+        "evidence_type": "EXPLICIT_ABSTENTION",
+        "snippet": null,
+        "description": "Static source analysis cannot establish dynamic runtime behavior 'buffer overflow'. System explicitly abstained."
+      },
+      "reason": "EXPLICIT ABSTENTION: Dynamic behavioral claim (buffer overflow) requires runtime dynamic execution or symbolic proof not present in static evidence."
+    }
+  ]
+}
